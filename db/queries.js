@@ -6,7 +6,7 @@ async function getAllGames() {
 }
 
 async function getAllCategories() {
-  const { rows } = await pool.query(`SELECT category FROM games`);
+  const { rows } = await pool.query(`SELECT DISTINCT category FROM games`);
   return rows;
 }
 
