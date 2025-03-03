@@ -1,5 +1,13 @@
 const pool = require(`./pool`);
 
+async function getCount() {
+  const dataT = await pool.query(`SELECT COUNT(title) FROM games`);
+  const dataC = await pool.query(`SELECT COUNT(DISTINCT category) FROM games`);
+  const title = dataT.rows[0].count;
+  const category = dataC.rows[0].count;
+  return { title, category };
+}
+
 async function getAllGames() {
   const { rows } = await pool.query(`SELECT title FROM games ORDER BY title`);
   return rows;
@@ -25,4 +33,10 @@ async function addGame(data) {
   );
 }
 
-module.exports = { getAllGames, getAllCategories, getSubCategory, addGame };
+module.exports = {
+  getCount,
+  getAllGames,
+  getAllCategories,
+  getSubCategory,
+  addGame,
+};

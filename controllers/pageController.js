@@ -1,8 +1,9 @@
 const db = require(`../db/queries`);
 
-index = (req, res) => {
-  res.render(`index`);
-};
+async function index(req, res) {
+  const count = await db.getCount();
+  res.render(`index`, { count: count });
+}
 
 async function allGames(req, res) {
   const data = await db.getAllGames();
