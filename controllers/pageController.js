@@ -20,4 +20,22 @@ async function subCategory(req, res) {
   res.render(`subCategory`, { title: query.sub_cat, sub: data });
 }
 
-module.exports = { index, allGames, allCategories, subCategory };
+function addGamesForm(req, res) {
+  res.render(`addGames`);
+}
+
+async function addGames(req, res) {
+  const { title, category } = req.body;
+  console.log(title, category);
+  await db.addGame({ title, category });
+  res.redirect(`/games`);
+}
+
+module.exports = {
+  index,
+  allGames,
+  allCategories,
+  subCategory,
+  addGamesForm,
+  addGames,
+};
