@@ -14,4 +14,10 @@ async function allCategories(req, res) {
   res.render(`categories`, { categories: data });
 }
 
-module.exports = { index, allGames, allCategories };
+async function subCategory(req, res) {
+  const query = req.params;
+  const data = await db.getSubCategory(query.sub_cat);
+  res.render(`subCategory`, { title: query.sub_cat, sub: data });
+}
+
+module.exports = { index, allGames, allCategories, subCategory };
