@@ -3,17 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="/common.css" />
+    <link rel="stylesheet" href="/games.css" />
     <title>All Games</title>
   </head>
   <body>
     <%- include(`partials/header.ejs`)%>
-    <h1>All games</h1>
-    <ul>
-      <%games.forEach(g=>{%>
-      <li><%= g.title%></li>
-      <a href="/edit-game/<%= g.title%>">Edit Title</a>
-      <%});%>
-    </ul>
+    <div class="game-container">
+      <h1>All games</h1>
+      <div class="title-bar">
+        <div>Title</div>
+        <div>Studio</div>
+        <div>Category</div>
+        <div>Actions</div>
+      </div>
+      <ul>
+        <%games.forEach(g=>{%>
+        <div class="game-card">
+          <li><%= g.title%></li>
+          <li><%= g.studio%></li>
+          <li><%= g.category%></li>
+          <div>
+            <a href="/edit-game/<%= g.title%>">Edit</a>
+            <a href="">Delete</a>
+          </div>
+        </div>
+        <%});%>
+      </ul>
+    </div>
   </body>
 </html>

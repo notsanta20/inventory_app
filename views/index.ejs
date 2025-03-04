@@ -3,15 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/common.css" />
     <link rel="stylesheet" href="/index.css" />
     <title>Home</title>
   </head>
   <body>
     <%- include(`partials/header.ejs`)%>
-    <h1>Testing</h1>
-    <div>
-      <div>Games : <%= count.title%></div>
-      <div>Categories : <%= count.category%></div>
+    <div class="counts">
+      <h1>Welcome to Game Library</h1>
+      <div class="count-container">
+        <div class="count">
+          <div class="count-name">Games</div>
+          <div class="count-num"><%= count.title%></div>
+          <div class="count-des">Total in Library</div>
+        </div>
+        <div class="count">
+          <div class="count-name">Studios</div>
+          <div class="count-num"><%= count.studio%></div>
+          <div class="count-des">Total in Library</div>
+        </div>
+        <div class="count">
+          <div class="count-name">Category</div>
+          <div class="count-num"><%= count.category%></div>
+          <div class="count-des">Total in Library</div>
+        </div>
+      </div>
+    </div>
+    <div class="guide">
+      <div>Guide</div>
+      <div>
+        <span>Games</span>
+        - View all Games in library
+      </div>
+      <div>
+        <span>Studios</span>
+        - View all Studios in library
+      </div>
+      <div>
+        <span>Categories</span>
+        - View all Categories in library
+      </div>
+      <div>
+        <span>Add Game</span>
+        - Use to Add game to library
+      </div>
     </div>
   </body>
 </html>

@@ -2,14 +2,16 @@ const pool = require(`./pool`);
 
 async function getCount() {
   const dataT = await pool.query(`SELECT COUNT(title) FROM games`);
+  const dataS = await pool.query(`SELECT COUNT(DISTINCT studio) FROM games`);
   const dataC = await pool.query(`SELECT COUNT(DISTINCT category) FROM games`);
   const title = dataT.rows[0].count;
+  const studio = dataS.rows[0].count;
   const category = dataC.rows[0].count;
-  return { title, category };
+  return { title, studio, category };
 }
 
 async function getAllGames() {
-  const { rows } = await pool.query(`SELECT title FROM games ORDER BY title`);
+  const { rows } = await pool.query(`SELECT * FROM games ORDER BY title`);
   return rows;
 }
 

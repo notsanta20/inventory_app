@@ -5,13 +5,14 @@ const SQL = `
 CREATE TABLE IF NOT EXISTS games (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   title VARCHAR (255),
+  studio VARCHAR (255),
   category VARCHAR (255)
 );
 
-INSERT INTO games (title, category)
+INSERT INTO games (title, studio, category)
 VALUES
-  ( 'GTA VI' , 'Action-Adventure'),
-  ( 'Ghost Of Yotei' , 'Action-Adventure');
+  ( 'GTA VI' , 'Rockstar', 'Action-Adventure'),
+  ( 'Ghost Of Yotei' , 'Sucker Punch', 'Action-Adventure');
 `;
 
 async function main() {

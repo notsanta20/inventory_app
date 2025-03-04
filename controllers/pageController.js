@@ -4,10 +4,13 @@ async function index(req, res) {
   const count = await db.getCount();
   res.render(`index`, { count: count });
 }
+async function deleteGame(title) {
+  console.log(title);
+}
 
 async function allGames(req, res) {
   const data = await db.getAllGames();
-  res.render(`games`, { games: data });
+  res.render(`games`, { games: data, deleteGame: deleteGame });
 }
 
 async function allCategories(req, res) {
@@ -21,8 +24,9 @@ async function subCategory(req, res) {
   res.render(`subCategory`, { title: query.subCat, sub: data });
 }
 
-function addGamesForm(req, res) {
-  res.render(`addGames`);
+async function addGamesForm(req, res) {
+  const categories = await db.getAllCategories();
+  res.render(`addGames`, { categories: categories });
 }
 
 async function addGames(req, res) {
