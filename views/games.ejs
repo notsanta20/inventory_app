@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/index.css" />
     <title>All Games</title>
   </head>
   <body>
@@ -11,6 +12,7 @@
     <ul>
       <%games.forEach(g=>{%>
       <li><%= g.title%></li>
+      <a href="/edit-game/<%= g.title%>">Edit Title</a>
       <%});%>
     </ul>
   </body>

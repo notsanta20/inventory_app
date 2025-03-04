@@ -33,10 +33,17 @@ async function addGame(data) {
   );
 }
 
+async function editGame(title, org) {
+  await pool.query(
+    `UPDATE games SET title = '${title}' WHERE title = '${org}';`
+  );
+}
+
 module.exports = {
   getCount,
   getAllGames,
   getAllCategories,
   getSubCategory,
   addGame,
+  editGame,
 };
