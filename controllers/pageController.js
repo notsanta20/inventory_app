@@ -13,6 +13,11 @@ async function allGames(req, res) {
   res.render(`games`, { games: data, deleteGame: deleteGame });
 }
 
+async function allStudios(req, res) {
+  const data = await db.getAllCategories();
+  res.render(`studios`, { categories: data });
+}
+
 async function allCategories(req, res) {
   const data = await db.getAllCategories();
   res.render(`categories`, { categories: data });
@@ -24,14 +29,13 @@ async function subCategory(req, res) {
   res.render(`subCategory`, { title: query.subCat, sub: data });
 }
 
-async function addGamesForm(req, res) {
-  const categories = await db.getAllCategories();
-  res.render(`addGames`, { categories: categories });
+function addGamesForm(req, res) {
+  res.render(`addGames`);
 }
 
 async function addGames(req, res) {
-  const { title, category } = req.body;
-  await db.addGame({ title, category });
+  const { title, studio, category } = req.body;
+  await db.addGame({ title, studio, category });
   res.redirect(`/games`);
 }
 
@@ -51,6 +55,7 @@ async function editGame(req, res) {
 module.exports = {
   index,
   allGames,
+  allStudios,
   allCategories,
   subCategory,
   addGamesForm,

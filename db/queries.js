@@ -15,6 +15,12 @@ async function getAllGames() {
   return rows;
 }
 
+async function editGame(title, org) {
+  await pool.query(
+    `UPDATE games SET title = '${title}' WHERE title = '${org}';`
+  );
+}
+
 async function getAllCategories() {
   const { rows } = await pool.query(
     `SELECT DISTINCT category FROM games ORDER BY category`
@@ -31,13 +37,7 @@ async function getSubCategory(query) {
 
 async function addGame(data) {
   await pool.query(
-    `INSERT INTO games (title, category) VALUES ('${data.title}', '${data.category}')`
-  );
-}
-
-async function editGame(title, org) {
-  await pool.query(
-    `UPDATE games SET title = '${title}' WHERE title = '${org}';`
+    `INSERT INTO games (title, studio, category) VALUES ('${data.title}', '${data.studio}', '${data.category}')`
   );
 }
 

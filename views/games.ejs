@@ -12,17 +12,21 @@
     <div class="game-container">
       <h1>All games</h1>
       <div class="title-bar">
-        <div>Title</div>
-        <div>Studio</div>
-        <div>Category</div>
+        <div>
+          <div>Title</div>
+          <div>Studio</div>
+          <div>Category</div>
+        </div>
         <div>Actions</div>
       </div>
       <ul>
         <%games.forEach(g=>{%>
         <div class="game-card">
-          <li><%= g.title%></li>
-          <li><%= g.studio%></li>
-          <li><%= g.category%></li>
+          <div>
+            <li><%= g.title%></li>
+            <li><%= g.studio%></li>
+            <li><%= g.category%></li>
+          </div>
           <div>
             <a href="/edit-game/<%= g.title%>">Edit</a>
             <a href="">Delete</a>
