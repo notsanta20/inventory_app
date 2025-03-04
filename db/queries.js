@@ -28,6 +28,10 @@ async function editGame(title, studio, category, org) {
   );
 }
 
+async function deleteGame(title) {
+  await pool.query(`DELETE FROM games WHERE title = '${title}'`);
+}
+
 async function getAllCategories() {
   const { rows } = await pool.query(
     `SELECT DISTINCT category FROM games ORDER BY category`
@@ -56,4 +60,5 @@ module.exports = {
   addGame,
   editGame,
   getSingleGame,
+  deleteGame,
 };

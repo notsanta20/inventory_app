@@ -23,8 +23,10 @@ async function editGame(req, res) {
   res.redirect(`/games`);
 }
 
-async function deleteGame(title) {
-  console.log(title);
+async function deleteGame(req, res) {
+  const title = req.params.gameTitle;
+  await db.deleteGame(title);
+  res.redirect(`/games`);
 }
 
 async function allStudios(req, res) {
@@ -63,4 +65,5 @@ module.exports = {
   addGames,
   editGameForm,
   editGame,
+  deleteGame,
 };

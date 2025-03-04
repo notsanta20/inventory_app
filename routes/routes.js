@@ -11,5 +11,6 @@ route.get(`/add-games`, controller.addGamesForm);
 route.post(`/add-games`, controller.addGames);
 route.get(`/edit-game/:gameTitle`, controller.editGameForm);
 route.post(`/edit-game/:gameTitle`, controller.editGame);
+route.get(`/delete-game/:gameTitle`, controller.deleteGame);
 
 module.exports = route;
