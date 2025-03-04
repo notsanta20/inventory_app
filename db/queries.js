@@ -15,9 +15,16 @@ async function getAllGames() {
   return rows;
 }
 
-async function editGame(title, org) {
+async function getSingleGame(title) {
+  const { rows } = await pool.query(
+    `SELECT * FROM games WHERE title = '${title}'`
+  );
+  return rows;
+}
+
+async function editGame(title, studio, category, org) {
   await pool.query(
-    `UPDATE games SET title = '${title}' WHERE title = '${org}';`
+    `UPDATE games SET title = '${title}', studio = '${studio}', category = '${category}' WHERE title = '${org}';`
   );
 }
 
@@ -48,4 +55,5 @@ module.exports = {
   getSubCategory,
   addGame,
   editGame,
+  getSingleGame,
 };
