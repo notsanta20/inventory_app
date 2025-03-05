@@ -61,6 +61,10 @@ async function addGames(req, res) {
   res.redirect(`/games`);
 }
 
+function error(req, res) {
+  res.render(`error`);
+}
+
 module.exports = {
   index,
   allGames,
@@ -73,4 +77,5 @@ module.exports = {
   editGame,
   deleteGame,
   subStudio,
+  error,
 };
