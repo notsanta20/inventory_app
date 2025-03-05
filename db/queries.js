@@ -32,9 +32,23 @@ async function deleteGame(title) {
   await pool.query(`DELETE FROM games WHERE title = '${title}'`);
 }
 
+async function getAllStudios() {
+  const { rows } = await pool.query(
+    `SELECT studio, COUNT(title) FROM games GROUP BY studio ORDER BY studio`
+  );
+  return rows;
+}
+
 async function getAllCategories() {
   const { rows } = await pool.query(
-    `SELECT DISTINCT category FROM games ORDER BY category`
+    `SELECT category, COUNT(title) FROM games GROUP BY category ORDER BY category`
+  );
+  return rows;
+}
+
+async function getSubStudio(query) {
+  const { rows } = await pool.query(
+    `SELECT title FROM games WHERE studio = '${query}' ORDER BY title`
   );
   return rows;
 }
@@ -61,4 +75,6 @@ module.exports = {
   editGame,
   getSingleGame,
   deleteGame,
+  getAllStudios,
+  getSubStudio,
 };

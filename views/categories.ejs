@@ -9,20 +9,24 @@
   </head>
   <body>
     <%- include(`partials/header.ejs`)%>
-    <div class="cat-container">
-      <h1>Categories</h1>
-      <div class="title-bar">
-        <div>category</div>
-        <div>No. of Titles</div>
-        <div>Actions</div>
+    <div class="main-container">
+      <h1>All Categories</h1>
+      <div class="title-bar card">
+        <div class="card-f">
+          <div>Category</div>
+          <div>No. of Titles</div>
+        </div>
+        <div class="card-l">Actions</div>
       </div>
       <ul>
         <%categories.forEach(c=>{%>
-        <div class="cat-card">
-          <a href="/categories/<%= c.category %>"><%= c.category%></a>
-          <a href="/categories/<%= c.category %>"><%= c.category%></a>
-          <div>
-            <a href="">Delete</a>
+        <div class="card">
+          <div class="card-f">
+            <li><%= c.category%></li>
+            <li><%= c.count%></li>
+          </div>
+          <div class="card-l">
+            <a href="/categories/<%= c.category%>">View</a>
           </div>
         </div>
         <%});%>

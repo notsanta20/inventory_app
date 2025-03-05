@@ -30,13 +30,19 @@ async function deleteGame(req, res) {
 }
 
 async function allStudios(req, res) {
-  const data = await db.getAllCategories();
-  res.render(`studios`, { categories: data });
+  const data = await db.getAllStudios();
+  res.render(`studios`, { studios: data });
 }
 
 async function allCategories(req, res) {
   const data = await db.getAllCategories();
   res.render(`categories`, { categories: data });
+}
+
+async function subStudio(req, res) {
+  const query = req.params;
+  const data = await db.getSubStudio(query.subStudio);
+  res.render(`subStudio`, { title: query.subStudio, sub: data });
 }
 
 async function subCategory(req, res) {
@@ -66,4 +72,5 @@ module.exports = {
   editGameForm,
   editGame,
   deleteGame,
+  subStudio,
 };

@@ -9,25 +9,25 @@
   </head>
   <body>
     <%- include(`partials/header.ejs`)%>
-    <div class="game-container">
+    <div class="game-container main-container">
       <h1>All games</h1>
-      <div class="title-bar">
-        <div>
+      <div class="title-bar card">
+        <div class="card-f game-f">
           <div>Title</div>
           <div>Studio</div>
           <div>Category</div>
         </div>
-        <div>Actions</div>
+        <div class="card-l game-l">Actions</div>
       </div>
       <ul>
         <%games.forEach(g=>{%>
-        <div class="game-card">
-          <div>
+        <div class="game-card card">
+          <div class="card-f game-f">
             <li><%= g.title%></li>
             <li><%= g.studio%></li>
             <li><%= g.category%></li>
           </div>
-          <div>
+          <div class="card-l game-l">
             <a href="/edit-game/<%= g.title%>">Edit</a>
             <a href="/delete-game/<%= g.title%>">Delete</a>
           </div>
