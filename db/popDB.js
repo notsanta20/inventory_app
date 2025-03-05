@@ -18,7 +18,6 @@ VALUES
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    // connectionString: `postgres://${process.env.DATABASE_NAME}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_HOST}/${process.env.DATABASE_USER}?sslmode=require`,
     connectionString: `postgres://${process.env.USER}:${process.env.PASSWORD}@${process.env.HOST}/${process.env.NAME}`,
   });
   await client.connect();
